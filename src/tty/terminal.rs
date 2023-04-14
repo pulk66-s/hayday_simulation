@@ -1,4 +1,6 @@
 use std::io::Write;
+use crate::game::context::Context;
+use crate::tty::buy::buy_cmd;
 
 #[derive(Debug)]
 pub struct Terminal {
@@ -16,25 +18,32 @@ impl Terminal {
 }
 
 fn print_help() {
-    println!("Available commands: exit, help");
+    println!("Available commands: exit, help, status");
 }
 
-fn parse_command(command: String, terminal: &mut Terminal) {
-    let command = command.trim();
+fn print_player_status(context: &mut Context) {
+    println!("Player status: {:?}", context.player);
+}
 
-    match command {
+fn parse_command(command: String, terminal: &mut Terminal, context: &mut Context) {
+    let command = command.trim();
+    let first_word = command.split_whitespace().next().unwrap_or("");
+
+    match first_word {
         "exit" => terminal.want_leave = true,
         "help" => print_help(),
+        "status" => print_player_status(context),
+        "buy" => buy_cmd(command.to_string(), context),
         _ => println!("Unknown command: {}", command),
     }
 }
 
-pub fn update(terminal: &mut Terminal) {
+pub fn update(terminal: &mut Terminal, context: &mut Context) {
     print!("{}", terminal.prompt);
     std::io::stdout().flush().expect("Failed to flush output"); // flush the output to make sure it appears before reading input
 
     let mut input = String::new();
 
     std::io::stdin().read_line(&mut input).expect("Failed to read line");
-    parse_command(input, terminal);
+    parse_command(input, terminal, context);
 }
