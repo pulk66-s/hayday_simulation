@@ -1,7 +1,7 @@
 #[derive(Debug)]
 pub struct Player {
-    pub money: i32,
-    pub xp: i32,
+    pub money: u32,
+    pub xp: u32,
 }
 
 impl Player {
