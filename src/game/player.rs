@@ -7,7 +7,7 @@ pub struct Player {
 impl Player {
     pub fn new() -> Player {
         Player {
-            money: 0,
+            money: 200,
             xp: 0,
         }
     }

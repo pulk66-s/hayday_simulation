@@ -23,7 +23,7 @@ impl FarmingMarket {
         FarmingMarket {}
     }
 
-    pub fn buy<T: Crop>(&self) -> Farm<T> {
+    pub fn get_crop<T: Crop>(&self) -> Farm<T> {
         Farm::new(T::new())
     }
 }
