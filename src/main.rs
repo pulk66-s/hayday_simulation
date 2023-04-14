@@ -1,6 +1,7 @@
 mod game;
 mod objects;
 mod crop;
+mod types;
 
 use game::context::Context;
 use objects::farm::Farm;
