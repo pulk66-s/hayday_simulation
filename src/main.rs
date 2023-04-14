@@ -15,7 +15,7 @@ fn main() {
     let farm = Farm::new(Wheat::new());
     let mut terminal = Terminal::new();
 
-    while terminal.wantLeave == false {
+    while terminal.want_leave == false {
         update(&mut terminal);
     }
 }

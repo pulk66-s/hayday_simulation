@@ -2,29 +2,29 @@ use std::io::Write;
 
 #[derive(Debug)]
 pub struct Terminal {
-    pub wantLeave: bool,
+    pub want_leave: bool,
     pub prompt: String,
 }
 
 impl Terminal {
     pub fn new() -> Terminal {
         Terminal {
-            wantLeave: false,
+            want_leave: false,
             prompt: "> ".to_string(),
         }
     }
 }
 
-fn printHelp() {
+fn print_help() {
     println!("Available commands: exit, help");
 }
 
-fn parseCommand(command: String, terminal: &mut Terminal) {
+fn parse_command(command: String, terminal: &mut Terminal) {
     let command = command.trim();
 
     match command {
-        "exit" => terminal.wantLeave = true,
-        "help" => printHelp(),
+        "exit" => terminal.want_leave = true,
+        "help" => print_help(),
         _ => println!("Unknown command: {}", command),
     }
 }
@@ -36,5 +36,5 @@ pub fn update(terminal: &mut Terminal) {
     let mut input = String::new();
 
     std::io::stdin().read_line(&mut input).expect("Failed to read line");
-    parseCommand(input, terminal);
+    parse_command(input, terminal);
 }
