@@ -1,7 +1,7 @@
 use crate::crop::attr::Crop;
 use crate::game::context::Context;
 
-#[derive(Debug)]
+#[derive(Clone)]
 pub struct Wheat {
     pub name: String,
     pub price: u32,
@@ -16,9 +16,9 @@ impl Wheat {
     }
 }
 
-impl Crop for Wheat {
-    fn harvest(&self, context: &mut Context) -> bool {
-        context.player.money += self.price;
-        true
-    }
-}
+// impl Crop for Wheat {
+//     fn harvest(&self, context: &mut Context) -> bool {
+//         context.player.money += self.price;
+//         true
+//     }
+// }
