@@ -7,7 +7,11 @@ mod tty;
 
 use game::context::Context;
 use tty::terminal::{Terminal, update};
-use objects::farm::Farm;
+use objects::{
+    farm::Farm,
+    silo::Silo,
+    types::BuildingType,
+};
 
 fn init_context() -> Context {
     let mut context = Context::new();
@@ -15,6 +19,7 @@ fn init_context() -> Context {
     for _ in 0..6 {
         context.board.farms.push(Farm::new());
     }
+    context.board.buildings.push(BuildingType::Silo(Silo::new()));
     return context;
 }
 

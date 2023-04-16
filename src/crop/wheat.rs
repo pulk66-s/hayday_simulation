@@ -1,6 +1,6 @@
 use std::fmt;
 
-#[derive(Clone)]
+#[derive(Debug, Clone, Eq, Hash, PartialEq)]
 pub struct Wheat {
     pub name: String,
     pub price: u32,

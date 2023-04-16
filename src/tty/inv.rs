@@ -12,9 +12,17 @@ fn farm_inv(ctx: &mut Context) {
     }
 }
 
+fn building_inv(ctx: &mut Context) {
+    println!("Building Inventory:");
+    for building in &ctx.board.buildings {
+        println!("Building: {}", building);
+    }
+}
+
 fn inv_category(category: &str, ctx: &mut Context) {
     match category {
         "farm" => farm_inv(ctx),
+        "building" => building_inv(ctx),
         _ => println!("Unknown category: {}", category),
     }
 }
@@ -22,6 +30,7 @@ fn inv_category(category: &str, ctx: &mut Context) {
 fn all_inv(ctx: &mut Context) {
     println!("All Inventory:");
     inv_category("farm", ctx);
+    inv_category("building", ctx)
 }
 
 pub fn inv_cmd(command: String, ctx: &mut Context) {
