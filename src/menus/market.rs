@@ -1,4 +1,3 @@
-use crate::crop::attr::Crop;
 use crate::objects::farm::Farm;
 
 #[derive(Debug)]
@@ -23,7 +22,7 @@ impl FarmingMarket {
         FarmingMarket {}
     }
 
-    pub fn get_crop<T: Crop>(&self) -> Farm<T> {
-        Farm::new(T::new())
+    pub fn get_farm(&self) -> Farm {
+        Farm::new()
     }
 }

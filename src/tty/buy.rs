@@ -1,5 +1,4 @@
 use crate::game::context::Context;
-use crate::crop::wheat::Wheat;
 use crate::objects::build::Building;
 
 fn buy_help() {
@@ -18,7 +17,7 @@ fn buy_help_category(category: String) {
 }
 
 fn buy_farmland(context: &mut Context) {
-    let farm = context.market.farming.get_crop::<Wheat>();
+    let farm = context.market.farming.get_farm();
 
     if farm.build(context) {
         println!("Bought farmland!");

@@ -4,7 +4,6 @@ use crate::game::{
 };
 use crate::menus::market::Market;
 
-#[derive(Debug)]
 pub struct Context {
     pub board: Board,
     pub player: Player,

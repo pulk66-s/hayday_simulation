@@ -21,8 +21,4 @@ impl Crop for Wheat {
         context.player.money += self.price;
         true
     }
-
-    fn new() -> Wheat {
-        Wheat::new()
-    }
 }
