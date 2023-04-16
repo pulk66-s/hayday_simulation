@@ -2,7 +2,7 @@ use crate::game::context::Context;
 use crate::crop::types::Crop;
 
 fn harvest_help() {
-    println!("harvest [plant]");
+    println!("harvest [plant | all]");
 }
 
 fn harvest(ctx: &mut Context, plant: &str, max_qte: Option<u32>) {

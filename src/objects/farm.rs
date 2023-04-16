@@ -16,7 +16,7 @@ impl Farm {
     pub fn new() -> Farm {
         Farm {
             crop: None,
-            price: 100,
+            price: 1,
             size: Pos { x: 1, y: 1 },
         }
     }
