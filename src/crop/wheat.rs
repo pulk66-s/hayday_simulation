@@ -4,6 +4,7 @@ use std::fmt;
 pub struct Wheat {
     pub name: String,
     pub price: u32,
+    pub duration: u32,
 }
 
 impl Wheat {
@@ -11,6 +12,7 @@ impl Wheat {
         Wheat {
             name: "Wheat".to_string(),
             price: 10,
+            duration: 10,
         }
     }
 }

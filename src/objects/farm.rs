@@ -1,4 +1,5 @@
 use crate::crop::types::CropType;
+use crate::crop::types::Crop;
 use crate::game::context::Context;
 use crate::objects::build::Building;
 use crate::types::Pos;
@@ -32,9 +33,13 @@ impl Farm {
         self.crop = Some(crop);
     }
 
-    pub fn collect(&mut self) -> Option<CropType> {
+    pub fn collect(&mut self, ctx: &mut Context) -> Option<CropType> {
         let crop = self.crop.clone();
+
         self.crop = None;
+        if crop.is_some() {
+            ctx.player.time += crop.clone().unwrap().duration();
+        }
         return crop;
     }
 }
@@ -42,8 +47,8 @@ impl Farm {
 impl fmt::Display for Farm {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match &self.crop {
-            Some(crop) => write!(f, "Farm: crop: {}, price: {}, size: {}", crop, self.price, self.size),
-            None => write!(f, "Farm: crop: None, price: {}, size: {}", self.price, self.size),
+            Some(crop) => write!(f, "Farm {{ crop: {}, price: {}, size: {} }}", crop, self.price, self.size),
+            None => write!(f, "Farm {{ crop: None, price: {}, size: {} }}", self.price, self.size),
         }
     }
 }
