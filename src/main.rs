@@ -4,6 +4,7 @@ mod crop;
 mod types;
 mod menus;
 mod tty;
+mod animals;
 
 use game::context::Context;
 use tty::terminal::{Terminal, update};
@@ -11,6 +12,7 @@ use objects::{
     farm::Farm,
     silo::Silo,
     barn::Barn,
+    coop::chicken::ChickenCoop,
     types::BuildingType,
 };
 
@@ -22,6 +24,7 @@ fn init_context() -> Context {
     }
     context.board.buildings.push(BuildingType::Silo(Silo::new()));
     context.board.buildings.push(BuildingType::Barn(Barn::new()));
+    context.board.buildings.push(BuildingType::ChickenCoop(ChickenCoop::new()));
     return context;
 }
 

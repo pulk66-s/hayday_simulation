@@ -3,6 +3,7 @@ use crate::objects::{
     farm::Farm,
     silo::Silo,
     barn::Barn,
+    coop::chicken::ChickenCoop
 };
 use crate::game::context::Context;
 use crate::objects::build::Building;
@@ -21,7 +22,8 @@ pub enum BarnContent {
 pub enum BuildingType {
     Farm(Farm),
     Silo(Silo),
-    Barn(Barn)
+    Barn(Barn),
+    ChickenCoop(ChickenCoop),
 }
 
 impl Building for BuildingType {
@@ -30,6 +32,7 @@ impl Building for BuildingType {
             BuildingType::Farm(farm) => farm.build(ctx),
             BuildingType::Silo(silo) => silo.build(ctx),
             BuildingType::Barn(barn) => barn.build(ctx),
+            BuildingType::ChickenCoop(coop) => coop.build(ctx),
         }
     }
 
@@ -38,6 +41,7 @@ impl Building for BuildingType {
             BuildingType::Farm(farm) => farm.name(),
             BuildingType::Silo(silo) => silo.name(),
             BuildingType::Barn(barn) => barn.name(),
+            BuildingType::ChickenCoop(coop) => coop.name(),
         }
     }
 }
@@ -48,6 +52,7 @@ impl fmt::Display for BuildingType {
             BuildingType::Farm(farm) => write!(f, "{}", farm),
             BuildingType::Silo(silo) => write!(f, "{}", silo),
             BuildingType::Barn(barn) => write!(f, "{}", barn),
+            BuildingType::ChickenCoop(coop) => write!(f, "{}", coop),
         }
     }
 }
