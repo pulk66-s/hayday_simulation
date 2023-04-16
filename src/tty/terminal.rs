@@ -1,6 +1,6 @@
 use std::io::Write;
 use crate::game::context::Context;
-use crate::tty::{buy::buy_cmd, inv::inv_cmd};
+use crate::tty::{buy::buy_cmd, inv::inv_cmd, plant::plant_cmd};
 
 #[derive(Debug)]
 pub struct Terminal {
@@ -35,6 +35,7 @@ fn parse_command(command: String, terminal: &mut Terminal, context: &mut Context
         "status" => print_player_status(context),
         "buy" => buy_cmd(command.to_string(), context),
         "inv" => inv_cmd(command.to_string(), context),
+        "plant" => plant_cmd(command.to_string(), context),
         _ => println!("Unknown command: {}", command),
     }
 }

@@ -27,6 +27,16 @@ impl Farm {
             size: Pos { x: 1, y: 1 },
         }
     }
+
+    pub fn plant(&mut self, crop: CropType) {
+        self.crop = Some(crop);
+    }
+
+    pub fn collect(&mut self) -> Option<CropType> {
+        let crop = self.crop.clone();
+        self.crop = None;
+        return crop;
+    }
 }
 
 impl fmt::Display for Farm {
