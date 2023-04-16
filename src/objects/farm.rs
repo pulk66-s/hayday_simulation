@@ -2,6 +2,7 @@ use crate::crop::types::CropType;
 use crate::game::context::Context;
 use crate::objects::build::Building;
 use crate::types::Pos;
+use std::fmt;
 
 #[derive(Clone)]
 pub struct Farm {
@@ -24,6 +25,15 @@ impl Farm {
             crop: Some(crop),
             price: 100,
             size: Pos { x: 1, y: 1 },
+        }
+    }
+}
+
+impl fmt::Display for Farm {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match &self.crop {
+            Some(crop) => write!(f, "Farm: crop: {}, price: {}, size: {}", crop, self.price, self.size),
+            None => write!(f, "Farm: crop: None, price: {}, size: {}", self.price, self.size),
         }
     }
 }
