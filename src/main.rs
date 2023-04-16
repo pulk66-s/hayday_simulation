@@ -10,6 +10,7 @@ use tty::terminal::{Terminal, update};
 use objects::{
     farm::Farm,
     silo::Silo,
+    barn::Barn,
     types::BuildingType,
 };
 
@@ -20,6 +21,7 @@ fn init_context() -> Context {
         context.board.farms.push(Farm::new());
     }
     context.board.buildings.push(BuildingType::Silo(Silo::new()));
+    context.board.buildings.push(BuildingType::Barn(Barn::new()));
     return context;
 }
 
