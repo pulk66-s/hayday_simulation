@@ -1,16 +1,17 @@
 use crate::game::context::Context;
 use crate::objects::build::Building;
+use crate::animals::attr::Animal;
 
 fn buy_help() {
     println!("Usage: buy <category> <item>");
-    println!("Categories: farm");
+    println!("Categories: farm, animal");
 }
 
 fn buy_help_category(category: String) {
     match category.as_str() {
         "farm" => {
             println!("Usage: buy farm <item>");
-            println!("Items: land");
+            println!("Items: land, chicken");
         }
         _ => println!("Unknown category: {}", category),
     }
@@ -26,13 +27,36 @@ fn buy_farmland(context: &mut Context) {
     }
 }
 
+fn buy_chicken_coop(context: &mut Context) {
+    let coop = context.market.farming.get_chicken_coop();
+
+    if coop.build(context) {
+        println!("Bought chicken coop!");
+    } else {
+        println!("Not enough money!");
+    }
+}
+
+fn buy_chicken(context: &mut Context) {
+    let chicken = context.market.animals.get_chicken();
+
+    if chicken.buy(context) {
+        println!("Bought chicken!");
+    } else {
+        println!("Not enough money!");
+    }
+}
+
 fn buy_item(category: String, item: String, context: &mut Context) {
     match category.as_str() {
-        "farm" => {
-            match item.as_str() {
-                "land" => buy_farmland(context),
-                _ => println!("Unknown item: {}", item),
-            }
+        "farm" => match item.as_str() {
+            "land" => buy_farmland(context),
+            "chicken" => buy_chicken_coop(context),
+            _ => println!("Unknown item: {}", item),
+        },
+        "animal" => match item.as_str() {
+            "chicken" => buy_chicken(context),
+            _ => println!("Unknown item: {}", item),
         }
         _ => println!("Unknown category: {}", category),
     }
