@@ -3,19 +3,19 @@ use crate::objects::coop::chicken::ChickenCoop;
 use crate::animals::chicken::Chicken;
 use crate::objects::provenderie::Provenderie;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct FarmingMarket {
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct AnimalMarket {
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct BuildingMarket {
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Market {
     pub farming: FarmingMarket,
     pub animals: AnimalMarket,

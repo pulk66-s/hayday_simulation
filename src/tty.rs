@@ -5,3 +5,4 @@ pub mod plant;
 pub mod harvest;
 pub mod feed;
 pub mod create;
+pub mod collect;

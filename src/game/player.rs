@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Player {
     pub money: u32,
     pub xp: u32,

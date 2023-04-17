@@ -6,6 +6,7 @@ use crate::objects::build::Building;
 const WIDTH: usize = 8;
 const HEIGHT: usize = 8;
 
+#[derive(Clone)]
 pub struct Board {
     pub cells: [[u8; WIDTH]; HEIGHT],
     pub farms: Vec<Farm>,
@@ -29,4 +30,15 @@ pub fn find_building(building_type: BuildingType, ctx: &mut Context) -> Option<&
         }
     }
     return None;
+}
+
+pub fn find_buildings(building_type: BuildingType, ctx: &mut Context) -> Vec<&mut BuildingType> {
+    let mut buildings = Vec::new();
+
+    for building in ctx.board.buildings.iter_mut() {
+        if building.name() == building_type.name() {
+            buildings.push(building);
+        }
+    }
+    return buildings;
 }

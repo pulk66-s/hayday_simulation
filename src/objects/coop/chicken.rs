@@ -7,7 +7,7 @@ use std::fmt;
 use crate::types::Pos;
 use crate::game::context::Context;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct ChickenCoop {
     pub name: String,
     pub level: u8,

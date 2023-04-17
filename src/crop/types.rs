@@ -6,7 +6,7 @@ pub trait Crop {
     fn name(&self) -> String;
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub enum CropType {
     Wheat(Wheat)
 }

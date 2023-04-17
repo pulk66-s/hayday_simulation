@@ -7,6 +7,7 @@ use crate::tty::{
     plant::plant_cmd,
     create::create_cmd,
     harvest::harvest_cmd,
+    collect::collect_cmd,
 };
 
 #[derive(Debug)]
@@ -46,6 +47,7 @@ fn parse_command(command: String, terminal: &mut Terminal, context: &mut Context
         "harvest" => harvest_cmd(command.to_string(), context),
         "feed" => feed_cmd(command.to_string(), context),
         "create" => create_cmd(command.to_string(), context),
+        "collect" => collect_cmd(command.to_string(), context),
         _ => println!("Unknown command: {}", command),
     }
 }

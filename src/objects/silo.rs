@@ -7,7 +7,7 @@ use crate::game::context::Context;
 use std::fmt;
 use std::collections::HashMap;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Silo {
     pub price: u32,
     pub size: Pos,

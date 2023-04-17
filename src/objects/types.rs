@@ -21,7 +21,7 @@ pub enum BarnContent {
     ChickenFood(ChickenFood)
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub enum BuildingType {
     Farm(Farm),
     Silo(Silo),

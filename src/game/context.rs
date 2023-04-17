@@ -12,6 +12,7 @@ use crate::objects::{
     build::Building
 };
 
+#[derive(Clone)]
 pub struct Context {
     pub board: Board,
     pub player: Player,

@@ -6,7 +6,7 @@ use std::collections::HashMap;
 
 use super::types::BarnContent;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Barn {
     pub price: u32,
     pub size: Pos,

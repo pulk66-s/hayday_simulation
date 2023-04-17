@@ -10,7 +10,7 @@ use crate::objects::{
 use crate::types::Pos;
 use std::fmt;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Farm {
     pub crop: Option<CropType>,
     pub price: u32,

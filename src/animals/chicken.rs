@@ -14,7 +14,7 @@ use crate::objects::{
     barn::Barn
 };
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Chicken {
     pub price: u32,
     pub feed: bool,
