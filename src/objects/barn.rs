@@ -43,6 +43,28 @@ impl Barn {
         println!("barn content: {:?}", self.content);
         return true;
     }
+
+    pub fn remove(&mut self, elem: BarnContent, amount: u32) -> bool {
+        if self.content.contains_key(&elem) {
+            let current_amount = self.content.get(&elem).unwrap();
+            if current_amount >= &amount {
+                self.capacity_used -= amount;
+                self.content.insert(elem, current_amount - amount);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    pub fn have(&self, elem: BarnContent, amount: u32) -> bool {
+        if self.content.contains_key(&elem) {
+            let current_amount = self.content.get(&elem).unwrap();
+            if current_amount >= &amount {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 impl Building for Barn {

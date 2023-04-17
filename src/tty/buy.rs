@@ -4,7 +4,7 @@ use crate::animals::attr::Animal;
 
 fn buy_help() {
     println!("Usage: buy <category> <item>");
-    println!("Categories: farm, animal");
+    println!("Categories: farm, animal, building");
 }
 
 fn buy_help_category(category: String) {
@@ -47,6 +47,16 @@ fn buy_chicken(context: &mut Context) {
     }
 }
 
+fn buy_provenderie(context: &mut Context) {
+    let provenderie = context.market.buildings.get_provenderie();
+
+    if provenderie.build(context) {
+        println!("Bought provenderie!");
+    } else {
+        println!("Not enough money!");
+    }
+}
+
 fn buy_item(category: String, item: String, context: &mut Context) {
     match category.as_str() {
         "farm" => match item.as_str() {
@@ -57,7 +67,11 @@ fn buy_item(category: String, item: String, context: &mut Context) {
         "animal" => match item.as_str() {
             "chicken" => buy_chicken(context),
             _ => println!("Unknown item: {}", item),
-        }
+        },
+        "building" => match item.as_str() {
+            "provenderie" => buy_provenderie(context),
+            _ => println!("Unknown item: {}", item),
+        },
         _ => println!("Unknown category: {}", category),
     }
 }
@@ -65,6 +79,10 @@ fn buy_item(category: String, item: String, context: &mut Context) {
 pub fn buy_cmd(cmd: String, context: &mut Context) {
     let words = cmd.split_whitespace().collect::<Vec<&str>>();
 
+    if words.len() == 1 {
+        buy_help();
+        return;
+    }
     if words.len() < 3 {
         if words[1] == "help" {
             buy_help();

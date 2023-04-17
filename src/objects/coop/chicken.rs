@@ -52,7 +52,7 @@ impl fmt::Display for ChickenCoop {
         let mut content = format!("Chicken Coop: {{ level: {}, max_capacity: {}, curr_capacity: {}, price: {}, size: {}, chickens: {{ ", self.level, self.max_capacity, self.curr_capacity, self.price, self.size);
 
         for chicken in &self.chickens {
-            content += &format!("{}{}, ", content, chicken);
+            content += &format!("{}, ", chicken);
         }
         content += "} }";
         write!(f, "{}", content)

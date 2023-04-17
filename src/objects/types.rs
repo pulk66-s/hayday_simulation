@@ -3,7 +3,9 @@ use crate::objects::{
     farm::Farm,
     silo::Silo,
     barn::Barn,
-    coop::chicken::ChickenCoop
+    provenderie::Provenderie,
+    coop::chicken::ChickenCoop,
+    animal_food::chicken::ChickenFood,
 };
 use crate::game::context::Context;
 use crate::objects::build::Building;
@@ -16,6 +18,7 @@ pub enum SiloContent {
 
 #[derive(Debug, Clone, Eq, Hash, PartialEq)]
 pub enum BarnContent {
+    ChickenFood(ChickenFood)
 }
 
 #[derive(Clone)]
@@ -24,6 +27,7 @@ pub enum BuildingType {
     Silo(Silo),
     Barn(Barn),
     ChickenCoop(ChickenCoop),
+    Provenderie(Provenderie),
 }
 
 impl Building for BuildingType {
@@ -33,6 +37,7 @@ impl Building for BuildingType {
             BuildingType::Silo(silo) => silo.build(ctx),
             BuildingType::Barn(barn) => barn.build(ctx),
             BuildingType::ChickenCoop(coop) => coop.build(ctx),
+            BuildingType::Provenderie(provenderie) => provenderie.build(ctx),
         }
     }
 
@@ -42,6 +47,7 @@ impl Building for BuildingType {
             BuildingType::Silo(silo) => silo.name(),
             BuildingType::Barn(barn) => barn.name(),
             BuildingType::ChickenCoop(coop) => coop.name(),
+            BuildingType::Provenderie(provenderie) => provenderie.name(),
         }
     }
 }
@@ -53,6 +59,7 @@ impl fmt::Display for BuildingType {
             BuildingType::Silo(silo) => write!(f, "{}", silo),
             BuildingType::Barn(barn) => write!(f, "{}", barn),
             BuildingType::ChickenCoop(coop) => write!(f, "{}", coop),
+            BuildingType::Provenderie(provenderie) => write!(f, "{}", provenderie),
         }
     }
 }
@@ -68,6 +75,7 @@ impl fmt::Display for SiloContent {
 impl fmt::Display for BarnContent {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
+            BarnContent::ChickenFood(chicken_food) => write!(f, "{}", chicken_food),
             _ => write!(f, "BarnContent"),
         }
     }

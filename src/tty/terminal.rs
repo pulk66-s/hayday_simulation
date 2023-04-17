@@ -3,7 +3,9 @@ use crate::game::context::Context;
 use crate::tty::{
     buy::buy_cmd,
     inv::inv_cmd,
+    feed::feed_cmd,
     plant::plant_cmd,
+    create::create_cmd,
     harvest::harvest_cmd,
 };
 
@@ -23,7 +25,7 @@ impl Terminal {
 }
 
 fn print_help() {
-    println!("Available commands: exit, help, status, buy, inv, plant, harverst");
+    println!("Available commands: exit, help, status, buy, inv, plant, harverst, feed, create");
 }
 
 fn print_player_status(context: &mut Context) {
@@ -42,6 +44,8 @@ fn parse_command(command: String, terminal: &mut Terminal, context: &mut Context
         "inv" => inv_cmd(command.to_string(), context),
         "plant" => plant_cmd(command.to_string(), context),
         "harvest" => harvest_cmd(command.to_string(), context),
+        "feed" => feed_cmd(command.to_string(), context),
+        "create" => create_cmd(command.to_string(), context),
         _ => println!("Unknown command: {}", command),
     }
 }

@@ -49,4 +49,11 @@ impl Context {
             _ => false,
         }
     }
+
+    pub fn feed_animal(&mut self, animal: &str) {
+        match animal {
+            "chicken" => println!("Feeding chicken"),
+            _ => println!("Unknown animal"),
+        }
+    }
 }
